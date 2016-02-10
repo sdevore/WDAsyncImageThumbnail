@@ -13,8 +13,8 @@ class what is nice when loading thumbnails from remote filesystems.
   s.license          = 'MIT'
   s.author           = { "Fred" => "major.freddy@yahoo.com" }
   s.source           = { :git => "https://github.com/fredmajor/WDAsyncImageThumbnail.git", :tag => s.version.to_s }
-#   s.platform     = :osx, '10.10'
-  s.osx.deployment_target = '10.10'
+#   s.platform     = :osx, '10.9'
+  s.osx.deployment_target = '10.9'
 
   s.requires_arc = true
 
