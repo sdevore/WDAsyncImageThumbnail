@@ -7,8 +7,17 @@ FOUNDATION_EXPORT double WDAsyncImageThumbnailVersionNumber;
 //! Project version string for WDAsyncImageThumbnail.
 FOUNDATION_EXPORT const unsigned char WDAsyncImageThumbnailVersionString[];
 
-#define wdCollectionLoadingThreads 3
+#ifndef wdDebugLoggingEnabled
+#define wdDebugLoggingEnabled 0
+#endif
+
+#ifndef wdCollectionLoadingThreads
+#define wdCollectionLoadingThreads 6
+#endif
+
+#ifndef wdCollectionThumbnailMaxSize
 #define wdCollectionThumbnailMaxSize 300
+#endif
 
 @class WDAsyncImageThumbnail;
 
@@ -23,16 +32,12 @@ FOUNDATION_EXPORT const unsigned char WDAsyncImageThumbnailVersionString[];
 
 @interface WDAsyncImageThumbnail : NSObject
 
-	typedef NS_ENUM (NSUInteger, WDThreadLoadedImageState){
-	WD_TLI_IDLE,
-	WD_TLI_LOAD_SCHEDULED,
-	WD_TLI_LOAD_COMPLETED
-};
+typedef NS_ENUM(NSUInteger, WDThreadLoadedImageState) { WD_TLI_IDLE, WD_TLI_LOAD_SCHEDULED, WD_TLI_LOAD_COMPLETED };
 
-@property(readonly) NSCache *imageCache;
-@property(readonly) NSURL *imageURL;
-@property(readonly) WDThreadLoadedImageState imageState;
-@property(nonatomic, weak) id <WDAsyncImageThumbnailDelegate> delegate;
+@property (readonly) NSCache *imageCache;
+@property (readonly) NSURL *imageURL;
+@property (readonly) WDThreadLoadedImageState imageState;
+@property (nonatomic, weak) id<WDAsyncImageThumbnailDelegate> delegate;
 
 #pragma mark - Main interface
 
